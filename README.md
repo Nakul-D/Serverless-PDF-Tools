@@ -1,2 +1,10 @@
 # Serverless-PDF-Tools
-A self-hostable serverless PDF toolkit designed for secure document processing inside your infrastructure.
+A lightweight tool for performing common PDF operations without relying on external SaaS platforms. Deploy it inside your own cloud environment to process documents securely while maintaining full control over your data.
+
+### Features:
+- Merge
+- Split
+- Insert
+- Remove
+- Compress
+- Watermark
