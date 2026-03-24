@@ -1,0 +1,176 @@
+{
+  "info": {
+    "name": "Serverless-PDF-Tools",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "presign-urls",
+      "item": [
+        {
+          "name": "generate-presigned-urls",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"filenames\": [\"Example.pdf\"]\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/generate-presigned-urls",
+              "host": ["{{baseUrl}}"],
+              "path": ["generate-presigned-urls"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "operations",
+      "item": [
+        {
+          "name": "compress-pdf",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"key\": \"uploads/402977dc-d560-4b2c-bbd9-81343f34f876.pdf\"\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/compress-pdf",
+              "host": ["{{baseUrl}}"],
+              "path": ["compress-pdf"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "merge-pdf",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"keys\": [\r\n    \"uploads/402977dc-d560-4b2c-bbd9-81343f34f876.pdf\",\r\n    \"uploads/402977dc-d560-4b2c-bbd9-81343f34f876.pdf\"\r\n  ]\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/merge-pdf",
+              "host": ["{{baseUrl}}"],
+              "path": ["merge-pdf"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "split-pdf",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"key\": \"uploads/2f5e9af3-eb2b-415b-984c-efc3735eab58.pdf\",\r\n  \"split_after_page_number\": 2\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/split-pdf",
+              "host": ["{{baseUrl}}"],
+              "path": ["split-pdf"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "remove-pages-from-pdf",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"key\": \"uploads/2f5e9af3-eb2b-415b-984c-efc3735eab58.pdf\",\r\n  \"from_page\": 1,\r\n  \"to_page\": 1\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/remove-pages-from-pdf",
+              "host": ["{{baseUrl}}"],
+              "path": ["remove-pages-from-pdf"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "password-protect-pdf",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"key\": \"uploads/402977dc-d560-4b2c-bbd9-81343f34f876.pdf\",\r\n  \"password\": \"12345\"\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/password-protect-pdf",
+              "host": ["{{baseUrl}}"],
+              "path": ["password-protect-pdf"]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [""]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [""]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "YOUR BASE URL"
+    }
+  ]
+}
