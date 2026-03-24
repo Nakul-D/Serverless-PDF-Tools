@@ -87,17 +87,10 @@ def lambda_handler(event, context):
         part1 = write_and_upload(writer1, SPLIT_FOLDER, temp_files)
         part2 = write_and_upload(writer2, SPLIT_FOLDER, temp_files)
 
-        # Cleanup
-        for f in temp_files:
-            if os.path.exists(f):
-                os.remove(f)
-
         return {
             "statusCode": 200,
             "body": json.dumps(
                 {
-                    "total_pages": total_pages,
-                    "split_after_page_number": split_after,
                     "part1": part1,
                     "part2": part2,
                 }
@@ -105,7 +98,10 @@ def lambda_handler(event, context):
         }
 
     except Exception as e:
+        return {"statusCode": 500, "body": json.dumps(f"error splitting PDF: {str(e)}")}
+
+    finally:
+        # Cleanup
         for f in temp_files:
             if os.path.exists(f):
                 os.remove(f)
-        return {"statusCode": 500, "body": json.dumps(f"error splitting PDF: {str(e)}")}

@@ -80,17 +80,12 @@ def lambda_handler(event, context):
             os.path.getsize(tmp_output) if os.path.exists(tmp_output) else None
         )
 
-        # Cleanup
-        for f in temp_files:
-            if os.path.exists(f):
-                os.remove(f)
-
         return {
             "statusCode": 200,
             "body": json.dumps(
                 {
-                    "compressed_filename": compressed_filename,
-                    "compressed_pdf_url": url,
+                    "filename": compressed_filename,
+                    "url": url,
                     "original_size_bytes": original_size,
                     "compressed_size_bytes": compressed_size,
                 }
@@ -98,10 +93,13 @@ def lambda_handler(event, context):
         }
 
     except Exception as e:
-        for f in temp_files:
-            if os.path.exists(f):
-                os.remove(f)
         return {
             "statusCode": 500,
             "body": json.dumps(f"error compressing PDF: {str(e)}"),
         }
+
+    finally:
+        # Cleanup
+        for f in temp_files:
+            if os.path.exists(f):
+                os.remove(f)

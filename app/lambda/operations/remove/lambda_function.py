@@ -30,8 +30,11 @@ def lambda_handler(event, context):
     from_page = body.get("from_page")
     to_page = body.get("to_page")
 
-    if not key:
-        return {"statusCode": 400, "body": json.dumps("key is required")}
+    if not key or not isinstance(key, str):
+        return {
+            "statusCode": 400,
+            "body": json.dumps("key must be provided as a string"),
+        }
     if from_page is None or to_page is None:
         return {
             "statusCode": 400,

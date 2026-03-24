@@ -69,17 +69,16 @@ def lambda_handler(event, context):
             ExpiresIn=3600,  # 1 hour
         )
 
-        # Clean up temp files
-        for f in temp_files:
-            if os.path.exists(f):
-                os.remove(f)
-
         return {
             "statusCode": 200,
-            "body": json.dumps(
-                {"merged_filename": merged_filename, "merged_pdf_url": url}
-            ),
+            "body": json.dumps({"filename": merged_filename, "url": url}),
         }
 
     except Exception as e:
         return {"statusCode": 500, "body": json.dumps(f"error merging PDFs: {str(e)}")}
+
+    finally:
+        # Clean up temp files
+        for f in temp_files:
+            if os.path.exists(f):
+                os.remove(f)

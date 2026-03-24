@@ -29,10 +29,16 @@ def lambda_handler(event, context):
     key = body.get("key")
     password = body.get("password")
 
-    if not key:
-        return {"statusCode": 400, "body": json.dumps("key is required")}
+    if not key or not isinstance(key, str):
+        return {
+            "statusCode": 400,
+            "body": json.dumps("key must be provided as a string"),
+        }
     if not password or not isinstance(password, str):
-        return {"statusCode": 400, "body": json.dumps("password is required")}
+        return {
+            "statusCode": 400,
+            "body": json.dumps("password must be provided as a string"),
+        }
 
     temp_files = []
 
