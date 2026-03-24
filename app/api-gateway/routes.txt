@@ -1,0 +1,8 @@
+POST /generate-presigned-urls
+POST /compress-pdf
+POST /merge-pdf
+POST /password-protect-pdf
+POST /remove-pages-from-pdf
+POST /split-pdf
+
+Integrate with respective lambda functions

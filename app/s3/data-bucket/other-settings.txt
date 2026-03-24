@@ -1,0 +1,4 @@
+Bucket Versioning: Disabled
+Encryption type: Server-side encryption with Amazon S3 managed keys (SSE-S3)
+Block all public access: On
+Lifecycle rules: DeleteAfter1Day
