@@ -9,7 +9,7 @@ cp -r app/lambda/operations/common/pypdf2-3.0.1.dist-info app/lambda/operations/
  
 # 2. Zip the contents
 cd app/lambda/operations/merge
-zip -r merge-function.zip .
+zip -r lambda-function.zip .
  
 # 3. Clean up copied dependencies
 rm -rf PyPDF2 pypdf2-3.0.1.dist-info
