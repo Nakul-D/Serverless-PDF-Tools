@@ -9,9 +9,9 @@ A lightweight tool for performing common PDF operations without relying on exter
 - **Near-zero cost when idle!**
 
 ## Architecture
-<img src="documentation/architecture-diagram.png" style="width:75%;" alt="Architecture">
+<img src="documentation/architecture-diagram.png" style="width:90%;" alt="Architecture">
 
 ## Screenshots
-<img src="screenshots/home-screen.png" style="width:75%;" alt="Home Screen">
+<img src="screenshots/home-screen.png" style="width:90%;" alt="Home Screen">
 
 See more in the [screenshots/](screenshots/) folder.
