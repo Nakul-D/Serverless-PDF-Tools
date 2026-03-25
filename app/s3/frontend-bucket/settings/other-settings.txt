@@ -1,0 +1,4 @@
+Bucket Versioning: Disabled
+Encryption type: Server-side encryption with Amazon S3 managed keys (SSE-S3)
+Static website hosting: Enabled
+Block public access: Off
