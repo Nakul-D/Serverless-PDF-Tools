@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serverless PDF Tools</title>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Background Elements -->
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+
+    <div class="container">
+
+        <!-- Header -->
+        <header>
+            <div class="logo">
+                <h1>Serverless PDF <span>Tools</span></h1>
+            </div>
+            <p>Simple tools for serious PDFs.</p>
+        </header>
+
+        <!-- Main Workspace -->
+        <main>
+
+            <!-- Tools Selection View -->
+            <section id="tools-view" class="view active-view">
+                <div class="tools-grid">
+
+                    <div class="tool-card" data-action="compress">
+                        <div class="tool-icon"><i class="fa-solid fa-compress"></i></div>
+                        <h3>Compress PDF</h3>
+                        <p>Reduce file size while optimizing for maximum PDF quality.</p>
+                    </div>
+
+                    <div class="tool-card" data-action="merge">
+                        <div class="tool-icon"><i class="fa-solid fa-object-group"></i></div>
+                        <h3>Merge PDFs</h3>
+                        <p>Combine multiple PDFs in the order you want into a single file.</p>
+                    </div>
+
+                    <div class="tool-card" data-action="password-protect">
+                        <div class="tool-icon"><i class="fa-solid fa-lock"></i></div>
+                        <h3>Protect PDF</h3>
+                        <p>Encrypt your PDF with a password to prevent unauthorized access.</p>
+                    </div>
+
+                    <div class="tool-card" data-action="remove">
+                        <div class="tool-icon"><i class="fa-solid fa-scissors"></i></div>
+                        <h3>Remove Pages</h3>
+                        <p>Delete specific pages from your PDF document.</p>
+                    </div>
+
+                    <div class="tool-card" data-action="split">
+                        <div class="tool-icon"><i class="fa-solid fa-arrows-split-up-and-left"></i></div>
+                        <h3>Split PDF</h3>
+                        <p>Split your PDF document into two parts at a specific page.</p>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- Active Tool View -->
+            <section id="active-tool-view" class="view">
+
+                <div class="active-tool-header">
+                    <button id="back-btn" class="icon-btn"><i class="fa-solid fa-arrow-left"></i></button>
+                    <h2 id="active-tool-title">Tool Name</h2>
+                </div>
+
+                <div class="upload-area" id="drop-zone">
+                    <i class="fa-solid fa-cloud-arrow-up"></i>
+                    <h3>Choose <span id="file-noun">a file</span> or drag it here</h3>
+                    <p class="file-hint">Supported format: PDF</p>
+                    <input type="file" id="file-input" accept="application/pdf" multiple style="display:none;">
+                    <button class="btn secondary" onclick="document.getElementById('file-input').click()">Browse
+                        Files</button>
+                </div>
+
+                <div id="file-list" class="file-list"></div>
+
+                <!-- Tool Specific Options -->
+                <div class="options-area" id="options-area" style="display: none;">
+
+                    <!-- Password Protect Options -->
+                    <div class="option-group" id="opt-password" style="display: none;">
+                        <label for="password-input">Password</label>
+                        <input type="password" id="password-input" placeholder="Enter secure password">
+                    </div>
+
+                    <!-- Remove Pages Options -->
+                    <div class="option-row" id="opt-remove" style="display: none;">
+                        <div class="option-group">
+                            <label for="from-page">From Page</label>
+                            <input type="number" id="from-page" min="1" placeholder="e.g. 2">
+                        </div>
+                        <div class="option-group">
+                            <label for="to-page">To Page</label>
+                            <input type="number" id="to-page" min="1" placeholder="e.g. 5">
+                        </div>
+                    </div>
+
+                    <!-- Split Options -->
+                    <div class="option-group" id="opt-split" style="display: none;">
+                        <label for="split-after">Split After Page</label>
+                        <input type="number" id="split-after" min="1" placeholder="e.g. 3">
+                        <small>Document will be split into two parts.</small>
+                    </div>
+
+                </div>
+
+                <div class="action-footer" id="action-footer" style="display: none;">
+                    <button id="process-btn" class="btn primary">
+                        <span class="btn-text">Process PDF</span>
+                        <div class="spinner"><i class="fa-solid fa-circle-notch fa-spin"></i></div>
+                    </button>
+                </div>
+
+            </section>
+
+            <!-- Result View -->
+            <section id="result-view" class="view">
+                <div class="result-card">
+                    <div class="success-icon"><i class="fa-solid fa-circle-check"></i></div>
+                    <h2>Success!</h2>
+                    <p id="result-message">Your task has been completed.</p>
+
+                    <div id="download-links" class="download-container">
+                        <!-- Links injected here by JS -->
+                    </div>
+
+                    <button id="close-btn" class="btn secondary mt-4">Close</button>
+                </div>
+            </section>
+
+        </main>
+
+        <footer>
+        </footer>
+
+    </div>
+
+    <!-- Error Toast -->
+    <div id="toast" class="toast">
+        <i class="fa-solid fa-circle-exclamation"></i>
+        <span id="toast-msg">Error occurred</span>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
